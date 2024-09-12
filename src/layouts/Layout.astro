@@ -3,11 +3,13 @@ interface Props {
 	title: string;
 }
 
+import backgroundImage from '@assets/images/background-image.png';
+
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" style={`background-image: url(${backgroundImage.src});`}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -34,7 +36,6 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-image: url("/assets/images/background-image.png");
 		background-size: cover;
 		background-position: center;
 	}

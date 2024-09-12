@@ -1,9 +1,19 @@
 ---
-const logoSrc = '/src/assets/images/Logo_Kumanday_Intelligence_N.svg'; // Ruta de tu logo
+import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
+import _logoSrc from '@assets/images/Logo_Kumanday_Intelligence_N.svg';
+
+const logoSrc = await getImage({ src: _logoSrc, format: 'webp' });
+
 ---
-
-<img src={logoSrc} alt="Logo de la empresa" class="logo" />
-
+<Image
+	src={logoSrc.src}
+	class="logo"
+	width="256"
+	height="256"
+	loading="lazy"
+	alt="Logo de la empresa"
+/>
 <style>
 	.logo {
 		width: 150px;  /* Ajusta el tamaño */

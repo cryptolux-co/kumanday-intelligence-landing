@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Logo from '../components/Logo.astro';
+
+import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
+
+import _titleSrc from '@assets/images/title.png';
+
+const titleSrc = await getImage({ src: _titleSrc, format: 'webp' });
+
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,7 +19,14 @@ import Logo from '../components/Logo.astro';
 		
 		<!-- Titulo -->
 		<section class="image-container">
-			<img src="/src/assets/images/title.png" alt="Imagen Central" class="central-image" />
+			<Image
+				src={titleSrc.src}
+				class="central-image"
+				width="256"
+				height="256"
+				loading="lazy"
+				alt="Imagen Central"
+			/>
 		</section>
 	</main>
 </Layout>
